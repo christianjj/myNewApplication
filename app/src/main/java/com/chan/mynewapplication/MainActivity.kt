@@ -2,9 +2,6 @@ package com.chan.mynewapplication
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.microsoft.appcenter.AppCenter
-import com.microsoft.appcenter.analytics.Analytics
-import com.microsoft.appcenter.crashes.Crashes
 
 
 class MainActivity : AppCompatActivity() {
@@ -12,9 +9,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        AppCenter.start(
-            application, "c920a76b-50ed-467c-acad-7b08dae2d01f",
-            Analytics::class.java, Crashes::class.java
-        )
+
     }
 }
