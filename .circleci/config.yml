@@ -14,8 +14,6 @@ jobs:
                     sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
       - restore_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
-      - run:
-          command: ./gradlew check
 
       - run:
           name: Install Dependencies
@@ -23,6 +21,11 @@ jobs:
             mkdir "$ANDROID_HOME/licenses" || true
             echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
             sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.2"
+            
+      - run:
+          command: ./gradlew check
+
+    
             
       - store_test_results:
           path: build/test-results
