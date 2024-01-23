@@ -17,8 +17,8 @@ jobs:
 
      
             
-     # - run:
-          #command: ./gradlew check
+      - run:
+          command: ./gradlew
 
     
             
