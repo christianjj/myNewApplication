@@ -16,6 +16,14 @@ jobs:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
           command: ./gradlew check
+
+      - run:
+          name: Install Dependencies
+          command: |
+            mkdir "$ANDROID_HOME/licenses" || true
+            echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+            sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.2"
+            
       - store_test_results:
           path: build/test-results
       - save_cache:
